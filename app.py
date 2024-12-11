@@ -84,14 +84,19 @@ def harvest(plant_id):
 
     # TODO: Create a new harvest object by passing in the form data from the
     # detail page form.
+    harvested_amount = request.form['harvested_amount']
+    date_harvested = request.form ['date_harvested']
+
     new_harvest = {
-        'quantity': '', # e.g. '3 tomatoes'
-        'date': '',
-        'plant_id': plant_id
+        'harvested_amount': harvested_amount,
+        'date_harvested': date_harvested,
+        'plant_id': ObjectId(plant_id)
     }
 
     # TODO: Make an `insert_one` database call to insert the object into the 
     # `harvests` collection of the database.
+
+    mongo.db.harvests.insert_one(new_harvest)
 
     return redirect(url_for('detail', plant_id=plant_id))
 

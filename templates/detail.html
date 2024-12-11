@@ -52,13 +52,12 @@
         #}
         <section id="harvest-history">
             <h3>Harvest History</h3>
-        
             <ul>
                 {% for harvest in harvests %}
                     <li>{{ harvest['date_harvested'] }}: Harvested {{ harvest['harvested_amount'] }}</li>
                 {% endfor %}
             </ul>
-        </section>  
+        </section>        
 
         <form action="/delete/{{ plant['_id'] }}" method='POST' id="delete-form" onsubmit="return confirm_delete()">
             <input type="submit" class="nav" onclick="delete_modal()" value="Delete Plant">
